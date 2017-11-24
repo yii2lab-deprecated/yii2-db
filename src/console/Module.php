@@ -7,4 +7,8 @@ use yii\base\Module as YiiModule;
 class Module extends YiiModule
 {
 	
+	public $migrateData;
+	public $importFixture;
+	public $grantUser;
+	
 }
