@@ -4,8 +4,11 @@ namespace yii2lab\db\domain\helpers;
 
 use Yii;
 use yii2lab\console\helpers\Output;
+use yii2lab\helpers\Helper;
 
 class CallbackHelper {
+	
+	const BASE_NAMESPACE = 'yii2lab\db\domain\filters\\';
 	
 	public static function run($classList) {
 		$classList = self::normalizeConfig($classList);
@@ -18,10 +21,13 @@ class CallbackHelper {
 		$new = [];
 		foreach($classList as $className => $config) {
 			if(is_integer($className)) {
-				$new[$config] = [];
-			} else {
-				$new[$className] = $config;
+				$className = $config;
+				$config = [];
 			}
+			if(!Helper::isClass($className)) {
+				$className = self::BASE_NAMESPACE . $className;
+			}
+			$new[$className] = $config;
 		}
 		return $new;
 	}
