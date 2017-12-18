@@ -4,8 +4,9 @@ namespace yii2lab\db\domain\filters;
 
 use Yii;
 use yii\base\BaseObject;
+use yii2lab\misc\interfaces\CommandInterface;
 
-class SetGrant extends BaseObject implements BaseInterface
+class SetGrant extends BaseObject implements CommandInterface
 {
 	
 	public $grantUser;

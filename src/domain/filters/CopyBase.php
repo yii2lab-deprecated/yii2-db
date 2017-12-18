@@ -7,8 +7,9 @@ use yii\base\BaseObject;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii2lab\console\helpers\Output;
+use yii2lab\misc\interfaces\CommandInterface;
 
-abstract class CopyBase extends BaseObject implements BaseInterface
+abstract class CopyBase extends BaseObject implements CommandInterface
 {
 	
 	public $fromTable;

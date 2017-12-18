@@ -4,9 +4,9 @@ namespace yii2lab\db\domain\filters;
 
 use Yii;
 use yii\base\BaseObject;
-use yii2lab\db\domain\filters\BaseInterface;
+use yii2lab\misc\interfaces\CommandInterface;
 
-class SetSequence extends BaseObject implements BaseInterface
+class SetSequence extends BaseObject implements CommandInterface
 {
 	
 	public $tableList;
