@@ -2,9 +2,9 @@
 
 namespace yii2lab\db\domain\helpers;
 
-use Yii;
 use yii2lab\console\helpers\Output;
 use yii2lab\helpers\Helper;
+use yii2lab\misc\helpers\CommandHelper;
 
 class CallbackHelper {
 	
@@ -34,9 +34,7 @@ class CallbackHelper {
 	
 	private static function runClass($className, $config) {
 		Output::block("Start " . $className);
-		$class = Yii::createObject($className);
-		Yii::configure($class, $config);
-		$class->run();
+		CommandHelper::run($config, $className)
 		Output::block("End " . $className);
 	}
 	
