@@ -34,7 +34,8 @@ class CallbackHelper {
 	
 	private static function runClass($className, $config) {
 		Output::block("Start " . $className);
-		CommandHelper::run($config, $className);
+		$config['class'] = $className;
+		CommandHelper::run($config);
 		Output::block("End " . $className);
 	}
 	
