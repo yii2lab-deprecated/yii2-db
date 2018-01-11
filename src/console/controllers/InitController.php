@@ -8,12 +8,10 @@ use yii2lab\db\domain\helpers\CallbackHelper;
 class InitController extends Controller
 {
 	
+	/**
+	 * Use custom scripts when the project is initialized
+	 */
 	public function actionIndex()
-	{
-		$this->actionAll();
-	}
-	
-	public function actionAll()
 	{
 		CallbackHelper::run($this->module->actions);
 	}
