@@ -4,7 +4,7 @@ namespace yii2lab\db\domain\helpers;
 
 use yii2lab\console\helpers\Output;
 use yii2lab\helpers\Helper;
-use yii2lab\misc\helpers\CommandHelper;
+use yii2lab\designPattern\command\helpers\CommandHelper;
 
 class CallbackHelper {
 	
