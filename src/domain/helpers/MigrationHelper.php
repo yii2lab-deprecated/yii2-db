@@ -73,6 +73,7 @@ class MigrationHelper {
 		}
 		
 		$keysStr = implode("\n\t\t", $keysArr);
+		return $keysStr;
 	}
 	
 	private static function getCode($tableName, $tableSchema) {
