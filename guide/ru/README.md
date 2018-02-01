@@ -6,3 +6,7 @@
 * [Установка](install.md)
 * [Конфигурация](config.md)
 * [Руководство](guide.md)
+
+## Консоль
+
+* [Фикстуры](console-fixture.md)

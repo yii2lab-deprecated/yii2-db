@@ -5,7 +5,7 @@ namespace yii2lab\db\domain\filters;
 use Yii;
 use yii\base\BaseObject;
 use yii2lab\console\helpers\Output;
-use yii2module\fixture\helpers\Fixtures;
+use yii2lab\db\domain\helpers\Fixtures;
 
 class ImportFixture extends BaseObject
 {

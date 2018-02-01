@@ -3,7 +3,7 @@
 namespace yii2lab\db\console\controllers;
 
 use yii2lab\console\yii\console\Controller;
-use yii2lab\db\domain\helpers\CallbackHelper;
+use yii2lab\designPattern\command\helpers\CommandHelper;
 
 class InitController extends Controller
 {
@@ -13,7 +13,7 @@ class InitController extends Controller
 	 */
 	public function actionIndex()
 	{
-		CallbackHelper::run($this->module->actions);
+		CommandHelper::run($this->module->actions);
 	}
 	
 }

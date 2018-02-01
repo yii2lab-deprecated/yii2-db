@@ -7,12 +7,10 @@ use yii2lab\helpers\generator\ClassGeneratorHelper;
 
 class MigrationHelper {
 	
-	public static function generateByTableName($tableName)
+	public static function generateByTableName($tableName, $namespace = 'console\migrations')
 	{
 		$tableSchema = Yii::$app->db->getTableSchema($tableName);
-		$prefix = 'm' . gmdate('ymd_His');
-		$dir = 'console\migrations';
-		$className = $dir . '\\' . $prefix . "_create_{$tableName}_table";
+		$className = self::getClassName($tableName, $namespace);
 		$config = [
 			'className' => $className,
 			'use' => ['yii2lab\migration\db\MigrationCreateTable as Migration'],
@@ -21,6 +19,13 @@ class MigrationHelper {
 			'namespace' => null,
 		];
 		ClassGeneratorHelper::generate($config);
+		return $className;
+	}
+	
+	private static function getClassName($tableName, $namespace) {
+		$prefix = 'm' . gmdate('ymd_His');
+		$namespace = str_replace(SL, BSL, $namespace);
+		$className = $namespace . BSL . $prefix . "_create_{$tableName}_table";
 		return $className;
 	}
 	
