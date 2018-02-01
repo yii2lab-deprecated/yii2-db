@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\db\domain\filters;
+namespace yii2lab\db\domain\filters\init;
 
 use Yii;
 use yii\base\BaseObject;

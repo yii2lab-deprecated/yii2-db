@@ -13,7 +13,7 @@ class MigrationHelper {
 		$className = self::getClassName($tableName, $namespace);
 		$config = [
 			'className' => $className,
-			'use' => ['yii2lab\migration\db\MigrationCreateTable as Migration'],
+			'use' => ['yii2lab\db\domain\db\MigrationCreateTable as Migration'],
 			'afterClassName' => 'extends Migration',
 			'code' => self::getCode($tableName, $tableSchema),
 			'namespace' => null,
