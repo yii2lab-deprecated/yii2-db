@@ -62,6 +62,9 @@ class SetPath extends BaseObject implements FilterInterface {
 	
 	private function scanMigrations($path) {
 		$dir = Yii::getAlias($path);
+		if(!FileHelper::has($dir)) {
+		    return [];
+        }
 		$pathList = FileHelper::findFiles($dir);
 		foreach($pathList as $pathItem) {
 			if(strpos($pathItem, 'migrations') !== false) {
