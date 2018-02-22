@@ -13,7 +13,7 @@ class ImportFixture extends BaseObject
 	public $tableList;
 	
 	public function run() {
-		$fixtures = Yii::createObject(Fixtures::className());
+		$fixtures = Yii::createObject(Fixtures::class);
 		$tables = $fixtures->import($this->tableList);
 		Output::items($tables, 'Imported tables');
 	}

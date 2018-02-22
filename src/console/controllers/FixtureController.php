@@ -18,7 +18,7 @@ class FixtureController extends Controller
 	 */
 	public function actionIndex($option = null)
 	{
-		$fixtures = Yii::createObject(Fixtures::className());
+		$fixtures = Yii::createObject(Fixtures::class);
 		$option = Question::displayWithQuit('Select operation', ['Export', 'Import'], $option);
 		if($option == 'e') {
 			$allTables = $fixtures->tableNameList();
@@ -46,7 +46,7 @@ class FixtureController extends Controller
 	 */
 	public function actionOne($option = null)
 	{
-		$fixtures = Yii::createObject(Fixtures::className());
+		$fixtures = Yii::createObject(Fixtures::class);
 		$option = Question::displayWithQuit('Select operation', ['Export', 'Import'], $option);
 		if($option == 'e') {
 			$table = Enter::display('Enter table name for export');
