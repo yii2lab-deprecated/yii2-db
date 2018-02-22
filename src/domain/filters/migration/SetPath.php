@@ -2,10 +2,10 @@
 
 namespace yii2lab\db\domain\filters\migration;
 
+use common\enums\app\ApiVersionEnum;
 use common\enums\app\AppEnum;
 use Yii;
 use yii\base\BaseObject;
-use yii2lab\helpers\Helper;
 use yii2lab\helpers\ModuleHelper;
 use yii2lab\helpers\yii\FileHelper;
 use yii2lab\designPattern\filter\interfaces\FilterInterface;
@@ -38,7 +38,7 @@ class SetPath extends BaseObject implements FilterInterface {
 	private function getAliases($config) {
 		$this->aliases = [];
 		$apps = AppEnum::values();
-		$apps = ArrayHelper::merge($apps, Helper::getApiSubApps());
+		$apps = ArrayHelper::merge($apps, ApiVersionEnum::getApiSubApps());
 		foreach($apps as $app) {
 			$this->getAppMigrations($app);
 		}
