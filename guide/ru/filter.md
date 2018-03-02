@@ -1,7 +1,12 @@
 Фильтры
 ===
+## Основное
 
-## yii2lab\db\domain\filters\migration\SetPath
+У всех, представленных ниже фильтров нейспейс такой: `yii2lab\db\domain\filters\migration\*`.
+
+## Фильтры
+
+### SetPath
 
 назначает пути поиска миграций
 
