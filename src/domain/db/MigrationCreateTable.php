@@ -14,14 +14,14 @@ class MigrationCreateTable extends Migration
 
 	protected $table;
 	
+	abstract public function getColumns();
+	
 	/**
 	 * @inheritdoc
 	 */
 	public function init() {
 		parent::init();
-		
 		$this->initTableName();
-		$this->initBugFix();
 	}
 	
 	public function getTableOptions($engine = 'InnoDB') {
@@ -39,13 +39,16 @@ class MigrationCreateTable extends Migration
 		$this->addCommentOnTable($this->table, $text);
 	}
 	
-	private function initBugFix() {
+	private function normalizeTableOptions($options) {
+		if(!empty($options)) {
+			return $options;
+		}
 		switch (Yii::$app->db->driverName) {
 			case 'mysql':
-				$this->tableOptions = $this->getTableOptions();
+				return $this->getTableOptions();
 				break;
 			case 'pgsql':
-				$this->tableOptions = null;
+				return null;
 				break;
 			default:
 				throw new \RuntimeException('Your database is not supported!');
@@ -67,9 +70,7 @@ class MigrationCreateTable extends Migration
 		if(method_exists($this, 'beforeCreate')) {
 			$this->beforeCreate();
 		}
-		$options = $options ? $options : $this->tableOptions;
-		
-		
+		$options = $this->normalizeTableOptions($options);
 		$tableSchema = Yii::$app->db->schema->getTableSchema($this->table);
 		if ($tableSchema === null) {
 			$result = parent::createTable($this->table, $columns, $options);
