@@ -33,7 +33,7 @@ class MigrationHelper {
 		if($columnData->isPrimaryKey) {
 			$columnCode = "\$this->primaryKey({$columnData->size})";
 		} elseif($columnData->type == 'timestamp') {
-			$columnCode = "\$this->timestamp()";
+			$columnCode = "\$this->timestamp()->defaultValue(null)";
 		} else {
 			$columnCode = "\$this->{$columnData->phpType}({$columnData->size})";
 		}
