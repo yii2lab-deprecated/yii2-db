@@ -5,13 +5,12 @@ namespace yii2lab\db\domain\filters\migration;
 use common\enums\app\ApiVersionEnum;
 use common\enums\app\AppEnum;
 use Yii;
-use yii\base\BaseObject;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 use yii2lab\helpers\ModuleHelper;
 use yii2lab\helpers\yii\FileHelper;
-use yii2lab\designPattern\filter\interfaces\FilterInterface;
 use yii2mod\helpers\ArrayHelper;
 
-class SetPath extends BaseObject implements FilterInterface {
+class SetPath extends BaseScenario {
 
 	public $path = [];
 	public $scan = [];
@@ -22,7 +21,8 @@ class SetPath extends BaseObject implements FilterInterface {
 		return APP == CONSOLE;
 	}
 	
-	public function run($config) {
+	public function run() {
+		$config = $this->getData();
 		$config['params']['dee.migration.scan'] = ArrayHelper::merge(
 			ArrayHelper::getValue($config, 'params.dee.migration.scan', []),
 			$this->scan
@@ -32,7 +32,7 @@ class SetPath extends BaseObject implements FilterInterface {
 			$this->getAliases($config),
 			$this->path
 		);
-		return $config;
+		$this->setData($config);
 	}
 	
 	private function getAliases($config) {
