@@ -7,6 +7,10 @@ use yii2lab\helpers\Helper;
 class PgsqlDriver extends BaseDriver
 {
 	
+	public function clearTable($table) {
+		$this->executeSql("TRUNCATE TABLE \"$table\" RESTART IDENTITY CASCADE");
+	}
+	
 	protected function disableForeignKeyChecks($table)
 	{
 		$this->executeSql("ALTER TABLE \"$table\" DISABLE TRIGGER ALL;");
@@ -22,10 +26,5 @@ class PgsqlDriver extends BaseDriver
 			$result[] = $item['tablename'];
 		}
 		return $result;
-	}
-	
-	protected function clearTable($table) {
-		// TRUNCATE TABLE "geo_country" RESTART IDENTITY CASCADE
-		$this->executeSql("TRUNCATE TABLE \"$table\" RESTART IDENTITY CASCADE");
 	}
 }

@@ -4,22 +4,30 @@ namespace yii2lab\db\domain\drivers\db;
 
 use Yii;
 use yii\db\Query;
-use yii2lab\db\domain\interfaces\DriverInterface;
+use yii\db\Transaction;
+use yii2lab\db\domain\interfaces\DbDriverInterface;
 
-abstract class BaseDriver implements DriverInterface
+abstract class BaseDriver implements DbDriverInterface
 {
 	//  TRUNCATE TABLE "geo_country" RESTART IDENTITY CASCADE
 	abstract protected function showTables();
 	abstract protected function disableForeignKeyChecks($table);
 	
+	/**
+	 * @var Transaction
+	 */
+	private $transaction;
+	
 	public function beginTransaction()
 	{
-		return $this->executeSql('BEGIN');
+		$this->transaction = Yii::$app->db->beginTransaction();
+		//return $this->executeSql('BEGIN');
 	}
 	
 	public function commitTransaction()
 	{
-		return $this->executeSql('COMMIT');
+		$this->transaction->commit();
+		//return $this->executeSql('COMMIT');
 	}
 	
 	public function loadData($table)
@@ -36,7 +44,7 @@ abstract class BaseDriver implements DriverInterface
 			return false;
 		} */
 		$this->disableForeignKeyChecks($table);
-		$this->clearTable($table);
+		//$this->clearTable($table);
 		$this->insertDataInTable($table, $data);
 		return true;
 	}
@@ -46,8 +54,8 @@ abstract class BaseDriver implements DriverInterface
 		$list = $this->showTables();
 		return $this->filterTableList($list);
 	}
-
-	protected function clearTable($table)
+	
+	public function clearTable($table)
 	{
 		return $this->createSql()->truncateTable($table)->execute();
 	}

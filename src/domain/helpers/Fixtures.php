@@ -53,6 +53,11 @@ class Fixtures extends Component
 		if(empty($all)) {
 			return $result;
 		}
+		
+		foreach($all as $table) {
+			$toDriver->truncateData($table);
+		}
+		
 		$toDriver->beginTransaction();
 		foreach($all as $table) {
 			$copyResult = $this->copyData($table, $fromDriver, $toDriver);

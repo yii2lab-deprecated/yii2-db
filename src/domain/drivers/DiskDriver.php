@@ -12,7 +12,13 @@ use yii2lab\store\Store;
 
 class DiskDriver implements DriverInterface
 {
-
+	
+	public function truncateData($table)
+	{
+		$file = $this->getFixtureDataDir() . DS . $table . '.php';
+		return FileHelper::remove($file);
+	}
+	
 	public function loadData($table)
 	{
 		$file = $this->getFixtureDataDir() . DS . $table . '.php';
