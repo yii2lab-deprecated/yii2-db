@@ -11,7 +11,7 @@ class PgsqlDriver extends BaseDriver
 		$this->executeSql("TRUNCATE TABLE \"$table\" RESTART IDENTITY CASCADE");
 	}
 	
-	protected function disableForeignKeyChecks($table)
+	public function disableForeignKeyChecks($table)
 	{
 		$this->executeSql("ALTER TABLE \"$table\" DISABLE TRIGGER ALL;");
 	}

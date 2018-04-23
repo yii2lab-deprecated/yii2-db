@@ -11,7 +11,7 @@ abstract class BaseDriver implements DbDriverInterface
 {
 	//  TRUNCATE TABLE "geo_country" RESTART IDENTITY CASCADE
 	abstract protected function showTables();
-	abstract protected function disableForeignKeyChecks($table);
+	abstract public function disableForeignKeyChecks($table);
 	
 	/**
 	 * @var Transaction
@@ -43,7 +43,7 @@ abstract class BaseDriver implements DbDriverInterface
 		/* if(!empty(DbHelper::isHasDataTable($table))) {
 			return false;
 		} */
-		$this->disableForeignKeyChecks($table);
+		//$this->disableForeignKeyChecks($table);
 		//$this->clearTable($table);
 		$this->insertDataInTable($table, $data);
 		return true;

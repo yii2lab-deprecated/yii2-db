@@ -9,7 +9,8 @@ interface DriverInterface
 	public function loadData($table);
 	public function saveData($table, $data);
 	public function getNameList();
-	//public function beginTransaction();
-	//public function commitTransaction();
+	public function beginTransaction();
+	public function commitTransaction();
+	public function disableForeignKeyChecks($table);
 
 }

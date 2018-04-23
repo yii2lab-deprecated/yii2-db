@@ -7,7 +7,7 @@ use yii2lab\helpers\Helper;
 class MysqlDriver extends BaseDriver
 {
 	
-	protected function disableForeignKeyChecks($table)
+	public function disableForeignKeyChecks($table)
 	{
 		$this->executeSql('SET foreign_key_checks = 0');
 	}

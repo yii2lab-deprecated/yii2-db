@@ -21,6 +21,10 @@ class DbDriver implements DriverInterface
 		$this->driver = Yii::createObject(self::DRIVER_NAMESPACE . '\\' . ucfirst($db) . 'Driver');
 	}
 	
+	public function disableForeignKeyChecks($table) {
+		return $this->driver->disableForeignKeyChecks($table);
+	}
+	
 	public function truncateData($table) {
 		return $this->driver->clearTable($table);
 	}

@@ -134,4 +134,8 @@ class DiskDriver implements DriverInterface
 	public function commitTransaction() {
 		// TODO: Implement commitTransaction() method.
 	}
+	
+	public function disableForeignKeyChecks($table) {
+		// TODO: Implement disableForeignKeyChecks() method.
+	}
 }

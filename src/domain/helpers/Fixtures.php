@@ -55,6 +55,10 @@ class Fixtures extends Component
 		}
 		
 		foreach($all as $table) {
+			$toDriver->disableForeignKeyChecks($table);
+		}
+		
+		foreach($all as $table) {
 			$toDriver->truncateData($table);
 		}
 		
