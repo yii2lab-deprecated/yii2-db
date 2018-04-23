@@ -9,7 +9,7 @@ class PgsqlDriver extends BaseDriver
 	
 	protected function disableForeignKeyChecks($table)
 	{
-		$this->executeSql("ALTER TABLE \"$table\" DISABLE TRIGGER ALL");
+		$this->executeSql("ALTER TABLE \"$table\" DISABLE TRIGGER ALL;");
 	}
 	
 	protected function showTables()
@@ -24,4 +24,8 @@ class PgsqlDriver extends BaseDriver
 		return $result;
 	}
 	
+	protected function clearTable($table) {
+		// TRUNCATE TABLE "geo_country" RESTART IDENTITY CASCADE
+		$this->executeSql("TRUNCATE TABLE \"$table\" RESTART IDENTITY CASCADE");
+	}
 }

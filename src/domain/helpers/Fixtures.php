@@ -47,20 +47,22 @@ class Fixtures extends Component
 		return $list;
 	}
 	
-	private function copyAll($all, $fromDriver, $toDriver)
+	private function copyAll($all, DriverInterface $fromDriver, DriverInterface $toDriver)
 	{
 		$result = [];
 		if(empty($all)) {
 			return $result;
 		}
+		$toDriver->beginTransaction();
 		foreach($all as $table) {
 			$copyResult = $this->copyData($table, $fromDriver, $toDriver);
 			$result[] = $table . ' ' . ($copyResult ? '' : '[fail]') . '';
 		}
+		$toDriver->commitTransaction();
 		return $result;
 	}
 	
-	private function copyData($table, $fromDriver, $toDriver)
+	private function copyData($table, DriverInterface $fromDriver, DriverInterface $toDriver)
 	{
 		/** @var DriverInterface $fromDriver */
 		$data = $fromDriver->loadData($table);

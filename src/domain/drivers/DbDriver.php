@@ -17,6 +17,16 @@ class DbDriver implements DriverInterface
 		$this->driver = Yii::createObject(self::DRIVER_NAMESPACE . '\\' . ucfirst($db) . 'Driver');
 	}
 	
+	public function beginTransaction()
+	{
+		return $this->driver->beginTransaction();
+	}
+	
+	public function commitTransaction()
+	{
+		return $this->driver->commitTransaction();
+	}
+	
 	public function loadData($table)
 	{
 		return $this->driver->loadData($table);

@@ -8,9 +8,19 @@ use yii2lab\db\domain\interfaces\DriverInterface;
 
 abstract class BaseDriver implements DriverInterface
 {
-	
+	//  TRUNCATE TABLE "geo_country" RESTART IDENTITY CASCADE
 	abstract protected function showTables();
 	abstract protected function disableForeignKeyChecks($table);
+	
+	public function beginTransaction()
+	{
+		return $this->executeSql('BEGIN');
+	}
+	
+	public function commitTransaction()
+	{
+		return $this->executeSql('COMMIT');
+	}
 	
 	public function loadData($table)
 	{

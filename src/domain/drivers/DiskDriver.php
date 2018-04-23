@@ -120,5 +120,12 @@ class DiskDriver implements DriverInterface
 		$code = $this->generateFixtureClassCode($table);
 		FileHelper::save($file, $code);
 	}
-
+	
+	public function beginTransaction() {
+		// TODO: Implement beginTransaction() method.
+	}
+	
+	public function commitTransaction() {
+		// TODO: Implement commitTransaction() method.
+	}
 }
