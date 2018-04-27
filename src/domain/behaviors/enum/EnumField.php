@@ -34,14 +34,7 @@ class EnumField implements \ArrayAccess, Arrayable
      */
     public function set($value)
     {
-        if ($value === null || $value === '') {
-            $value = [];
-        } elseif (is_string($value)) {
-            $value = Format::decode($value, true);
-            if (!is_array($value)) {
-                throw new InvalidParamException('Value is scalar');
-            }
-        }
+	    $value = Format::decode($value);
         if (!is_array($value)) {
             throw new InvalidParamException('Value is not array');
         } else {
