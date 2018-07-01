@@ -18,6 +18,7 @@ class FixtureController extends Controller
 	 */
 	public function actionIndex($option = null)
 	{
+		/** @var Fixtures $fixtures */
 		$fixtures = Yii::createObject(Fixtures::class);
 		$option = Question::displayWithQuit('Select operation', ['Export', 'Import'], $option);
 		if($option == 'e') {
