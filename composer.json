@@ -18,6 +18,7 @@
 	"require": {
 		"yiisoft/yii2": "*",
 		"deesoft/yii2-console": "~1.0",
+		"paulzi/yii2-json-behavior": "^1.0",
 		"php": ">=5.3.0"
 	}
 }
