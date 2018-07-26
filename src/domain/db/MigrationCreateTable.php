@@ -12,7 +12,11 @@ abstract class MigrationCreateTable extends BaseMigration
 	
 	public function up()
 	{
-		$this->myCreateTable($this->getColumns());
+		try {
+			$this->myCreateTable($this->getColumns());
+		} catch(\yii\base\NotSupportedException $e) {
+		
+		}
 	}
 	
 	public function down()

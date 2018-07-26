@@ -3,6 +3,7 @@
 namespace yii2lab\db\domain\db;
 
 use Yii;
+use yii\base\NotSupportedException;
 use yii\db\Migration;
 
 /**
@@ -49,7 +50,7 @@ class BaseMigration extends Migration
 				return null;
 				break;
 			default:
-				throw new \RuntimeException('Your database is not supported!');
+				//throw new \RuntimeException('Your database is not supported!');
 		}
 	}
 	
@@ -76,7 +77,9 @@ class BaseMigration extends Migration
 		
 		if(method_exists($this, 'afterCreate')) {
 			if(!empty($this->comment)) {
-				$this->comment($this->comment);
+				if(Yii::$app->db->driverName != 'sqlite') {
+					$this->comment($this->comment);
+				}
 			}
 			$this->afterCreate();
 		}
@@ -110,6 +113,9 @@ class BaseMigration extends Migration
 	
 	protected function myAddForeignKey($columns, $refTable, $refColumns, $delete = 'CASCADE', $update = 'CASCADE')
 	{
+		if(Yii::$app->db->driverName == 'sqlite') {
+			return null;
+		}
 		$name = $this->generateNameForKey('fk', $this->pureTableName(), [$columns, $refTable, $refColumns]);
 		return $this->addForeignKey($name, $this->table, $columns, $refTable, $refColumns, $delete, $update);
 	}
