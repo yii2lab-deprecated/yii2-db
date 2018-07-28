@@ -3,8 +3,8 @@
 namespace yii2lab\db\domain\db;
 
 use Yii;
-use yii\base\NotSupportedException;
 use yii\db\Migration;
+use yii2lab\misc\enums\DbDriverEnum;
 
 /**
  * Migration
@@ -43,15 +43,13 @@ class BaseMigration extends Migration
 			return $options;
 		}
 		switch (Yii::$app->db->driverName) {
-			case 'mysql':
+			case DbDriverEnum::MYSQL:
 				return $this->getTableOptions();
 				break;
-			case 'pgsql':
-				return null;
+			case DbDriverEnum::PGSQL:
 				break;
-			default:
-				//throw new \RuntimeException('Your database is not supported!');
 		}
+		return null;
 	}
 	
 	private function initTableName() {
@@ -72,7 +70,7 @@ class BaseMigration extends Migration
 		$options = $this->normalizeTableOptions($options);
 		$tableSchema = Yii::$app->db->schema->getTableSchema($this->table);
 		if ($tableSchema === null) {
-			$result = parent::createTable($this->table, $columns, $options);
+			parent::createTable($this->table, $columns, $options);
 		}
 		
 		if(method_exists($this, 'afterCreate')) {
@@ -83,7 +81,6 @@ class BaseMigration extends Migration
 			}
 			$this->afterCreate();
 		}
-		return true;
 	}
 	
 	protected function myDropTable()
