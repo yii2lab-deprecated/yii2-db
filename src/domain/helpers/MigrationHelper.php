@@ -7,6 +7,20 @@ use yii2lab\helpers\generator\ClassGeneratorHelper;
 
 class MigrationHelper {
 	
+	public static function getControllerConfig() {
+		return [
+			'class' => 'dee\console\MigrateController',
+			'migrationPath' => '@console/migrations',
+			'generatorTemplateFiles' => [
+				'create_table' => '@yii2lab/db/domain/yii/views/createTableMigration.php',
+				'drop_table' => '@yii/views/dropTableMigration.php',
+				'add_column' => '@yii/views/addColumnMigration.php',
+				'drop_column' => '@yii/views/dropColumnMigration.php',
+				'create_junction' => '@yii/views/createTableMigration.php',
+			],
+		];
+	}
+	
 	public static function generateByTableName($tableName, $namespace = 'console\migrations')
 	{
 		$tableSchema = Yii::$app->db->getTableSchema($tableName);
