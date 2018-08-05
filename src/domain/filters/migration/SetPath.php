@@ -37,8 +37,13 @@ class SetPath extends BaseScenario {
 	
 	private function getAliases($config) {
 		$this->aliases = [];
-		$apps = AppEnum::values();
-		$apps = ArrayHelper::merge($apps, ApiVersionEnum::getApiSubApps());
+		$apps = [];
+        if(class_exists(AppEnum::class)) {
+            $apps = AppEnum::values();
+        }
+		if(class_exists(ApiVersionEnum::class)) {
+            $apps = ArrayHelper::merge($apps, ApiVersionEnum::getApiSubApps());
+        }
 		foreach($apps as $app) {
 			$this->getAppMigrations($app);
 		}
