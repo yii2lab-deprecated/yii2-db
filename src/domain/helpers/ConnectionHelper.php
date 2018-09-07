@@ -2,6 +2,7 @@
 
 namespace yii2lab\db\domain\helpers;
 
+use yii2lab\helpers\Helper;
 use yii2lab\helpers\UrlHelper;
 use yii2lab\misc\enums\DbDriverEnum;
 use Yii;
@@ -50,25 +51,10 @@ class ConnectionHelper
 	
 	public static function parseDsn($dsn)
 	{
-		//$parsed = UrlHelper::parse($dsn);
-		//prr($parsed,1,1);
 		preg_match('#([a-z]+):(.+)#', $dsn, $matches);
 		$result['driver'] = $matches[1];
 		$result['path'] = $matches[2];
-		$isHasParams = strpos($result['path'], ';') || strpos($result['path'], '=');
-		$params = [];
-		if($isHasParams) {
-			$segments = explode(';', $matches[2]);
-			foreach($segments as $segment) {
-				$s = explode('=', $segment);
-				if(count($s) > 1) {
-					$params[$s[0]] = $s[1];
-				} else {
-					$params[] = $s[0];
-				}
-			}
-		}
-		$result['params'] = $params;
+		$result['params'] = Helper::parseParams($result['path'], ';', '=');
 		return $result;
 	}
 	
