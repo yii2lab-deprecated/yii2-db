@@ -2,9 +2,9 @@
 
 namespace yii2lab\db\console\controllers;
 
-use yii2lab\console\helpers\input\Enter;
-use yii2lab\console\helpers\Output;
-use yii2lab\console\base\Controller;
+use yii2lab\extension\console\helpers\input\Enter;
+use yii2lab\extension\console\helpers\Output;
+use yii2lab\extension\console\base\Controller;
 use yii2lab\db\domain\helpers\MigrationHelper;
 
 /**

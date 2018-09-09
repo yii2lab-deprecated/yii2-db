@@ -6,7 +6,7 @@ use Yii;
 use yii\base\BaseObject;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
-use yii2lab\console\helpers\Output;
+use yii2lab\extension\console\helpers\Output;
 use yii2lab\designPattern\command\interfaces\CommandInterface;
 
 abstract class CopyBase extends BaseObject implements CommandInterface

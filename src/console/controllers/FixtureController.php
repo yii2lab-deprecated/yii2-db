@@ -3,12 +3,12 @@
 namespace yii2lab\db\console\controllers;
 
 use Yii;
-use yii2lab\console\base\Controller;
+use yii2lab\extension\console\base\Controller;
 use yii2lab\db\domain\helpers\Fixtures;
-use yii2lab\console\helpers\Output;
-use yii2lab\console\helpers\input\Question;
-use yii2lab\console\helpers\input\Select;
-use yii2lab\console\helpers\input\Enter;
+use yii2lab\extension\console\helpers\Output;
+use yii2lab\extension\console\helpers\input\Question;
+use yii2lab\extension\console\helpers\input\Select;
+use yii2lab\extension\console\helpers\input\Enter;
 
 class FixtureController extends Controller
 {

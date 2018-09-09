@@ -4,7 +4,7 @@ namespace yii2lab\db\domain\db;
 
 use Yii;
 use yii\db\Migration;
-use yii2lab\misc\enums\DbDriverEnum;
+use yii2lab\db\domain\enums\DbDriverEnum;
 
 /**
  * Migration

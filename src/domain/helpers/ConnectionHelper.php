@@ -4,7 +4,7 @@ namespace yii2lab\db\domain\helpers;
 
 use yii2lab\helpers\Helper;
 use yii2lab\helpers\UrlHelper;
-use yii2lab\misc\enums\DbDriverEnum;
+use yii2lab\db\domain\enums\DbDriverEnum;
 use Yii;
 use yii\db\Exception;
 use yii\db\Connection;

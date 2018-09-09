@@ -5,7 +5,7 @@ namespace yii2lab\db\domain\filters\migration;
 use common\enums\app\ApiVersionEnum;
 use common\enums\app\AppEnum;
 use Yii;
-use yii2lab\designPattern\scenario\base\BaseScenario;
+use yii2lab\extension\scenario\base\BaseScenario;
 use yii2lab\helpers\ModuleHelper;
 use yii2lab\helpers\yii\FileHelper;
 use yii2mod\helpers\ArrayHelper;

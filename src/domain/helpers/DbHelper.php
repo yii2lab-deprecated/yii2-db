@@ -2,7 +2,7 @@
 
 namespace yii2lab\db\domain\helpers;
 
-use yii2lab\misc\enums\DbDriverEnum;
+use yii2lab\db\domain\enums\DbDriverEnum;
 
 class DbHelper
 {
