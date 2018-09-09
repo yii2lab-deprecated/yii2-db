@@ -7,7 +7,7 @@ use common\enums\app\AppEnum;
 use Yii;
 use yii2lab\extension\scenario\base\BaseScenario;
 use yii2lab\helpers\ModuleHelper;
-use yii2lab\helpers\yii\FileHelper;
+use yii2lab\extension\yii\helpers\FileHelper;
 use yii2mod\helpers\ArrayHelper;
 
 class SetPath extends BaseScenario {

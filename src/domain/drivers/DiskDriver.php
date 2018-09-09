@@ -3,7 +3,7 @@
 namespace yii2lab\db\domain\drivers;
 
 use Yii;
-use yii2lab\helpers\yii\FileHelper;
+use yii2lab\extension\yii\helpers\FileHelper;
 use yii\helpers\Inflector;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
