@@ -2,7 +2,7 @@
 
 namespace yii2lab\db\domain\drivers\db;
 
-use yii2lab\helpers\Helper;
+use yii2lab\extension\common\helpers\Helper;
 
 class MysqlDriver extends BaseDriver
 {

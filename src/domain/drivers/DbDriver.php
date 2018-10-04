@@ -4,7 +4,7 @@ namespace yii2lab\db\domain\drivers;
 
 use Yii;
 use yii2lab\db\domain\interfaces\DbDriverInterface;
-use yii2lab\helpers\Helper;
+use yii2lab\extension\common\helpers\Helper;
 use yii2lab\db\domain\interfaces\DriverInterface;
 
 class DbDriver implements DriverInterface
