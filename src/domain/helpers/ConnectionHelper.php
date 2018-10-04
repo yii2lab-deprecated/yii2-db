@@ -3,7 +3,7 @@
 namespace yii2lab\db\domain\helpers;
 
 use yii2lab\extension\common\helpers\Helper;
-use yii2lab\helpers\UrlHelper;
+use yii2lab\extension\common\helpers\UrlHelper;
 use yii2lab\db\domain\enums\DbDriverEnum;
 use Yii;
 use yii\db\Exception;
