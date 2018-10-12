@@ -2,9 +2,9 @@
 
 namespace yii2lab\db\domain\filters\migration;
 
-use common\enums\app\ApiVersionEnum;
-use common\enums\app\AppEnum;
+//use common\enums\app\ApiVersionEnum;
 use Yii;
+use yii2lab\app\domain\enums\AppEnum;
 use yii2lab\extension\scenario\base\BaseScenario;
 use yii2lab\helpers\ModuleHelper;
 use yii2lab\extension\yii\helpers\FileHelper;
@@ -41,9 +41,9 @@ class SetPath extends BaseScenario {
         if(class_exists(AppEnum::class)) {
             $apps = AppEnum::values();
         }
-		if(class_exists(ApiVersionEnum::class)) {
+		/*if(class_exists(ApiVersionEnum::class)) {
             $apps = ArrayHelper::merge($apps, ApiVersionEnum::getApiSubApps());
-        }
+        }*/
 		foreach($apps as $app) {
 			$this->getAppMigrations($app);
 		}
