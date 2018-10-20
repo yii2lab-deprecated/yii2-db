@@ -7,9 +7,27 @@ use yii2lab\extension\code\helpers\generator\ClassGeneratorHelper;
 
 class MigrationHelper {
 	
+	public static function pureTableName($table) {
+		$table = str_replace(['{', '}', '%'], '', $table);
+		return $table;
+	}
+	
+	public static function getTableNameOfClass($className) {
+		$className = basename($className);
+		$classNameArr = explode('_', $className);
+		$classNameArrStriped = array_slice($classNameArr, 3, -1);
+		$table = implode('_', $classNameArrStriped);
+		return $table;
+	}
+	
+	/**
+	 * @return array
+	 * @deprecated use yii2lab\db\console\controllers\MigrateController
+	 */
 	public static function getControllerConfig() {
 		return [
-			'class' => 'dee\console\MigrateController',
+			'class' => 'yii2lab\db\console\controllers\MigrateController',
+			/*'class' => 'dee\console\MigrateController',
 			'migrationPath' => '@console/migrations',
 			'generatorTemplateFiles' => [
 				'create_table' => '@yii2lab/db/domain/yii/views/createTableMigration.php',
@@ -17,12 +35,11 @@ class MigrationHelper {
 				'add_column' => '@yii/views/addColumnMigration.php',
 				'drop_column' => '@yii/views/dropColumnMigration.php',
 				'create_junction' => '@yii/views/createTableMigration.php',
-			],
+			],*/
 		];
 	}
 	
-	public static function generateByTableName($tableName, $namespace = 'console\migrations')
-	{
+	public static function generateByTableName($tableName, $namespace = 'console\migrations') {
 		$tableSchema = Yii::$app->db->getTableSchema($tableName);
 		$className = self::getClassName($tableName, $namespace);
 		$config = [
@@ -79,8 +96,7 @@ class MigrationHelper {
 		foreach($tableSchema->foreignKeys as $foreign) {
 			foreach($foreign as $kk => $rr) {
 				if(!is_integer($kk)) {
-					$keysArr[] =
-						"\$this->myAddForeignKey(
+					$keysArr[] = "\$this->myAddForeignKey(
 			'{$kk}',
 			'{{%{$foreign[0]}}}',
 			'{$rr}',

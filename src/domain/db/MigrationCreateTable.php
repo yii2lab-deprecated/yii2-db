@@ -2,11 +2,9 @@
 
 namespace yii2lab\db\domain\db;
 
-use Yii;
 use yii\base\NotSupportedException;
 use yii2lab\db\domain\behaviors\migrate\GrandTableFilter;
 use yii2lab\db\domain\behaviors\migrate\NormalizeTableOptionsFilter;
-use yii2lab\db\domain\behaviors\migrate\TableCommentFilter;
 use yii2lab\db\domain\enums\EventEnum;
 use yii2lab\db\domain\events\TableEvent;
 
@@ -68,7 +66,7 @@ abstract class MigrationCreateTable extends BaseMigration {
 			$this->beforeCreate();
 		}
 		
-		$tableSchema = Yii::$app->db->schema->getTableSchema($event->table);
+		$tableSchema = $this->db->schema->getTableSchema($event->table);
 		if($tableSchema === null) {
 			parent::createTable($event->table, $columns, $event->options);
 		}
