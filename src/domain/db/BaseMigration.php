@@ -7,7 +7,7 @@ use yii2lab\db\domain\helpers\MigrationHelper;
 use yii2lab\db\domain\traits\FieldTypeTrait;
 use yii2lab\db\domain\traits\MyMethodTrait;
 
-class BaseMigration extends Migration {
+abstract class BaseMigration extends Migration {
 	
 	use FieldTypeTrait;
 	use MyMethodTrait;
