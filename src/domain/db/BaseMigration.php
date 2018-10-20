@@ -10,7 +10,6 @@ use yii\db\Migration;
  */
 class BaseMigration extends Migration {
 	
-	protected $tableOptions;
 	protected $table;
 	
 	/**
@@ -32,10 +31,15 @@ class BaseMigration extends Migration {
 		if(!empty($this->table)) {
 			return;
 		}
-		$className = basename(get_class($this));
+		$this->table = $this->getTableNameOfClass(get_class($this));
+	}
+	
+	protected function getTableNameOfClass($className) {
+		$className = basename($className);
 		$classNameArr = explode('_', $className);
 		$classNameArrStriped = array_slice($classNameArr, 3, -1);
-		$this->table = implode('_', $classNameArrStriped);
+		$table = implode('_', $classNameArrStriped);
+		return $table;
 	}
 	
 	protected function pureTableName($table = null) {
