@@ -6,7 +6,7 @@ namespace yii2lab\db\domain\filters\migration;
 use Yii;
 use yii2lab\app\domain\enums\AppEnum;
 use yii2lab\extension\scenario\base\BaseScenario;
-use yii2lab\helpers\ModuleHelper;
+use yii2lab\extension\common\helpers\ModuleHelper;
 use yii2lab\extension\yii\helpers\FileHelper;
 use yii2mod\helpers\ArrayHelper;
 
