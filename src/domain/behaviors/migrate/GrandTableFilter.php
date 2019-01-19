@@ -21,7 +21,7 @@ class GrandTableFilter extends Behavior {
 	}
 	
 	public function afterCreateTable(TableEvent $event) {
-		$defaultSchema = PostgresHelper::getDefaultSchema();
+		$defaultSchema = PostgresHelper::getDefaultSchema(YII_ENV_TEST ? 'test' : 'main');
 		if(empty($defaultSchema)) {
 			return;
 		}
