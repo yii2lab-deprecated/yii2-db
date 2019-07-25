@@ -13,7 +13,7 @@ class PgsqlDriver extends BaseDriver
 	
 	public function disableForeignKeyChecks($table)
 	{
-		$this->executeSql("ALTER TABLE \"$table\" DISABLE TRIGGER ALL;");
+//		$this->executeSql("ALTER TABLE \"$table\" DISABLE TRIGGER ALL;");
 	}
 	
 	protected function showTables()
