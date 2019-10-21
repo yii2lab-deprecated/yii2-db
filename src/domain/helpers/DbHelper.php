@@ -48,8 +48,8 @@ class DbHelper {
 			$connection['dsn'] = $connection['driver'] . ':' . $connection['dbname'];
 		} else {
 			$host = isset($connection['host']) ? $connection['host'] : 'localhost';
-			$port = isset($connection['port']) ? $connection['port'] : '';
-			$connection['dsn'] = "{$connection['driver']}:host={$host};dbname={$connection['dbname']};port=$port;";
+			$port = isset($connection['port']) ? "port={$connection['port']};"  : '';
+			$connection['dsn'] = "{$connection['driver']}:host={$host};dbname={$connection['dbname']};{$port}";
 		}
 
 		return $connection['dsn'];
