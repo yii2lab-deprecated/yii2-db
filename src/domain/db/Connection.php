@@ -14,6 +14,9 @@ class Connection extends \yii\db\Connection
 	public function __construct(array $config = []) {
 		$name = YII_ENV_TEST ? 'test' : 'main';
 		$connectionFromEnv = DbHelper::getConfigFromEnv($name);
+		if (isset($connectionFromEnv['port'])){
+			unset($connectionFromEnv['port']);
+		}
 		$config = ArrayHelper::merge($connectionFromEnv, $config);
 		parent::__construct($config);
 	}

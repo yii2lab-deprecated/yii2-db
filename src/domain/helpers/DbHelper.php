@@ -23,7 +23,7 @@ class DbHelper {
 		if(empty($connection['dsn'])) {
 			$connection['dsn'] = self::getDsn($connection);
 		}
-		
+
 		$connection = self::clean($connection);
 		return $connection;
 	}
@@ -47,9 +47,11 @@ class DbHelper {
 		if($connection['driver'] == DbDriverEnum::SQLITE) {
 			$connection['dsn'] = $connection['driver'] . ':' . $connection['dbname'];
 		} else {
-			$connection['host'] = isset($connection['host']) ? $connection['host'] : 'localhost';
-			$connection['dsn'] = $connection['driver'] . ':host=' . $connection['host'] . ';dbname=' . $connection['dbname'];
+			$host = isset($connection['host']) ? $connection['host'] : 'localhost';
+			$port = isset($connection['port']) ? $connection['port'] : '';
+			$connection['dsn'] = "{$connection['driver']}:host={$host};dbname={$connection['dbname']};port=$port;";
 		}
+
 		return $connection['dsn'];
 	}
 	
