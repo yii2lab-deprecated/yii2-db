@@ -50,7 +50,6 @@ class DbTarget extends DbTargetBase
             // to ensure insert statement is not affected by a rollback
             $this->db = clone $this->db;
         }
-
         $tableName = $this->db->quoteTableName($this->logTable);
         $sql = "INSERT INTO $tableName ([[level]], [[category]], [[log_time]], [[prefix]], [[message]])
                 VALUES (:level, :category, :log_time, :prefix, :message)";
@@ -83,7 +82,7 @@ class DbTarget extends DbTargetBase
 		$fileTarget = new FileTarget();
 		list($text, $level, $category, $timestamp) = $message;
 		$timestamp = date('Y-m-d H:i:s', $timestamp);
-		$fileTarget->messages = "level: {$level}; category: {$category}; timestamp: {$timestamp}:query: $text: prefix: {$this->getMessagePrefix($message)}";
+		$fileTarget->messages = [["level: {$level}; category: {$category}; timestamp: {$timestamp}:query: $text: prefix: {$this->getMessagePrefix($message) }"]];
 		$fileTarget->logFile = $this->logFile;
 		$fileTarget->export();
 	}
